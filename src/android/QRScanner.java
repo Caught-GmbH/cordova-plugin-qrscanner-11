@@ -456,11 +456,12 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
                 //Configure the decoder
                 ArrayList<BarcodeFormat> formatList = new ArrayList<BarcodeFormat>();
                 formatList.add(BarcodeFormat.QR_CODE);
-                mBarcodeView.setDecoderFactory(new DefaultDecoderFactory(formatList));
+                mBarcodeView.setDecoderFactory(new DefaultDecoderFactory(formatList, null, null, 2));
 
                 //Configure the camera (front/back)
                 CameraSettings settings = new CameraSettings();
                 settings.setRequestedCameraId(getCurrentCameraId());
+                settings.setScanInverted(true);
                 mBarcodeView.setCameraSettings(settings);
 
                 FrameLayout.LayoutParams cameraPreviewParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
